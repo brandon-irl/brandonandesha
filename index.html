@@ -3,73 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brandon & Esha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <title>Brandon & Esha - October 18th, 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
     <style>
-        body {
-            background-color: #e0f7fa; /* light blue background */
-            font-family: 'Arial', sans-serif; /* fallback font */
+        * {
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh; /* fills the screen height */
-            position: relative; /* for positioning copyright */
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
-            font-family: 'Dancing Script', cursive; /* stylized font */
-            font-size: 4em; /* larger text size */
-            color: #f5f5f0; /* white smoke */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* subtle shadow */
-            margin-bottom: 0px; /* no space below headline */
+        
+        body {
+            background: linear-gradient(135deg, #f4e8d8 0%, #e8d5c4 100%);
+            font-family: 'Cormorant Garamond', serif;
+            color: #3d2817;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
-        .image-container {
-            width: 100%; /* make it responsive */
-            height: 66vh; /* 2/3 of the viewport height */
-            display: flex;
-            align-items: center; /* vertical center */
-            justify-content: center; /* horizontal center */
-            position: relative; /* for absolute children */
-            overflow: hidden; /* cuts off excess image */
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
-        img {
-            max-width: 90%; /* makes image responsive and leaves space for border */
-            max-height: 90%; /* keeps image visible inside border */
-            object-fit: cover; /* cover the container */
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* shadow for the image */
-            border: 10px solid #f5f5f0; /* white smoke border on image */
-        }
-        .coming-soon {
-            font-size: 1.5em; /* larger size */
-            font-style: italic; /* italicized text */
-            color: #666; /* existing color */
-            margin: 20px 0; /* space around text */
-            text-align: center; /* center align */
-        }
-        footer {
-            font-size: 0.6em; 
-            color: #999;
-            position: absolute;
-            bottom: 10px; /* fixed at bottom */
+
+        header {
             text-align: center;
-            width: 100%; /* full width */
+            padding: 60px 20px 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5em;
+            color: #8b4513;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .date {
+            font-size: 1.8em;
+            color: #6b4423;
+            font-weight: 300;
+        }
+
+        .hero-image {
+            text-align: center;
+            margin: 40px 0;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-image img {
+            max-width: 800px;
+            width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 12px solid #f5f5f0;
+        }
+
+        .message-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 50px 40px;
+            margin: 60px auto;
+            max-width: 800px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 1.4s ease-out;
+            border: 3px solid #8fa584;
+        }
+
+        .message-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #c65d3b;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .message-section p {
+            font-size: 1.3em;
+            color: #4a3728;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .message-section .signature {
+            font-style: italic;
+            margin-top: 30px;
+            color: #8b4513;
+            font-weight: 600;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+
+        .gallery-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf7f2 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.6s ease-out;
+            border: 3px solid #c65d3b;
+        }
+
+        .gallery-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .gallery-card:hover::before {
+            left: 100%;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-card svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-card:hover svg {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .gallery-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2em;
+            color: #8b4513;
+            margin-bottom: 15px;
+        }
+
+        .gallery-card p {
+            font-size: 1.2em;
+            color: #5a4a3a;
+            margin-bottom: 20px;
+        }
+
+        .gallery-card .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #c65d3b 0%, #a84a2e 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(198, 93, 59, 0.4);
+        }
+
+        .gallery-card .btn:hover {
+            background: linear-gradient(135deg, #a84a2e 0%, #8b3d24 100%);
+            box-shadow: 0 6px 25px rgba(198, 93, 59, 0.5);
+            transform: scale(1.05);
+        }
+
+        .video-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            animation: fadeInUp 1.8s ease-out;
+            border: 3px solid #8fa584;
+        }
+
+        .video-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #c65d3b;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(61, 40, 23, 0.6);
+            font-size: 0.9em;
+            margin-top: 60px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3em;
+            }
+            
+            .date {
+                font-size: 1.4em;
+            }
+
+            .message-section,
+            .video-section {
+                padding: 30px 25px;
+            }
+
+            .message-section h2,
+            .video-section h2 {
+                font-size: 2.2em;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .gallery-card svg {
+                width: 80px;
+                height: 80px;
+            }
         }
     </style>
 </head>
 <body>
 
-<h1>October 18th, 2025</h1>
+<header>
+    <h1>Brandon & Esha</h1>
+    <div class="date">October 18th, 2025</div>
+</header>
 
-<div class="image-container">
-    <img src="docs/assets/images/0A5A9875.jpg" alt="Coming Soon" loading="lazy"> <!-- lazy load for caching -->
+<div class="hero-image">
+    <img src="docs/assets/images/0A5A9875.jpg" alt="Brandon & Esha" loading="lazy">
 </div>
 
-<p class="coming-soon">Thanks for coming! Check back soon...</p>
+<div class="container">
+    <div class="message-section">
+        <h2>A Message to Our Guests</h2>
+        <p>
+            Thank you for celebrating with us on our special day! Your presence meant the world to us, 
+            and we are so grateful to have shared this beautiful moment with our closest family and friends.
+        </p>
+        <p>
+            We hope you enjoy reliving the memories through the photos and video below. 
+            Thank you for all the love, laughter, and support. We couldn't have asked for a more perfect day!
+        </p>
+        <p class="signature">
+            With all our love,<br>
+            Brandon & Esha ❤️
+        </p>
+    </div>
+
+    <div class="content-grid">
+        <div class="gallery-card" onclick="window.open('https://umbrellatreephotography.passgallery.com/-eshabrandon/gallery', '_blank')">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23 19C23 19.5304 22.7893 20.0391 22.4142 20.4142C22.0391 20.7893 21.5304 21 21 21H3C2.46957 21 1.96086 20.7893 1.58579 20.4142C1.21071 20.0391 1 19.5304 1 19V8C1 7.46957 1.21071 6.96086 1.58579 6.58579C1.96086 6.21071 2.46957 6 3 6H7L9 3H15L17 6H21C21.5304 6 22.0391 6.21071 22.4142 6.58579C22.7893 6.96086 23 7.46957 23 8V19Z" stroke="#c65d3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 17C14.2091 17 16 15.2091 16 13C16 10.7909 14.2091 9 12 9C9.79086 9 8 10.7909 8 13C8 15.2091 9.79086 17 12 17Z" stroke="#c65d3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>View Our Photos</h3>
+            <p>Browse through our professional wedding photos and download your favorites</p>
+            <a href="https://umbrellatreephotography.passgallery.com/-eshabrandon/gallery" target="_blank" class="btn">Open Gallery</a>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <h2>Our Wedding Video</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="Wedding Video" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
 
 <footer>
-    <p>&copy; 2025 Brandon Alexander. All rights reserved.</p>
+    <p>&copy; 2025 Brandon & Esha. All rights reserved.</p>
 </footer>
 
 </body>
