@@ -14,191 +14,261 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f4e8d8 0%, #e8d5c4 100%);
             font-family: 'Cormorant Garamond', serif;
             color: #3d2817;
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Hero Section - Full Screen */
+        .hero-section {
             position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('docs/assets/images/0A5A9875.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: zoomIn 20s ease-out infinite alternate;
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.3) 0%,
+                rgba(0, 0, 0, 0.1) 50%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 7rem);
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-content .date {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: white;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '↓';
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5em;
-            color: #8b4513;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
-        }
-
-        .date {
-            font-size: 1.8em;
-            color: #6b4423;
-            font-weight: 300;
-        }
-
-        .hero-image {
-            text-align: center;
-            margin: 40px 0;
-            animation: fadeIn 1.2s ease-out;
-        }
-
-        .hero-image img {
-            max-width: 800px;
-            width: 90%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            border: 12px solid #f5f5f0;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f4e8d8 0%, #e8d5c4 100%);
         }
 
         .message-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 50px 40px;
-            margin: 60px auto;
-            max-width: 800px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            animation: fadeInUp 1.4s ease-out;
-            border: 3px solid #8fa584;
+            background: white;
+            border-radius: 20px;
+            padding: 60px 50px;
+            margin: 0 auto 80px;
+            max-width: 900px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #c65d3b, #8fa584, #c65d3b);
         }
 
         .message-section h2 {
             font-family: 'Dancing Script', cursive;
-            font-size: 3em;
-            color: #c65d3b;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: #8b4513;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .message-section p {
-            font-size: 1.3em;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
             color: #4a3728;
             text-align: center;
-            line-height: 1.8;
-            margin-bottom: 20px;
+            line-height: 2;
+            margin-bottom: 25px;
         }
         
         .message-section .signature {
             font-style: italic;
-            margin-top: 30px;
+            margin-top: 40px;
             color: #8b4513;
             font-weight: 600;
+            font-size: 1.3rem;
         }
 
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
-            margin: 60px auto;
+            margin: 0 auto 80px;
             max-width: 1000px;
         }
 
         .gallery-card {
-            background: linear-gradient(135deg, #ffffff 0%, #faf7f2 100%);
+            background: white;
             border-radius: 20px;
-            padding: 40px 30px;
+            padding: 50px 40px;
             text-align: center;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1.6s ease-out;
-            border: 3px solid #c65d3b;
+            animation: fadeInUp 1.2s ease-out;
         }
 
-        .gallery-card::before {
+        .gallery-card::after {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #c65d3b, #8fa584);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
-        .gallery-card:hover::before {
-            left: 100%;
+        .gallery-card:hover::after {
+            transform: scaleX(1);
         }
 
         .gallery-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-card svg {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
             transition: transform 0.4s ease;
         }
 
         .gallery-card:hover svg {
-            transform: scale(1.15) rotate(5deg);
+            transform: scale(1.2) rotate(5deg);
         }
 
         .gallery-card h3 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.2em;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             color: #8b4513;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .gallery-card p {
-            font-size: 1.2em;
+            font-size: clamp(1rem, 2vw, 1.3rem);
             color: #5a4a3a;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            line-height: 1.8;
         }
 
         .gallery-card .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 40px;
             background: linear-gradient(135deg, #c65d3b 0%, #a84a2e 100%);
             color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 50px;
             font-size: 1.1em;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(198, 93, 59, 0.4);
+            box-shadow: 0 5px 20px rgba(198, 93, 59, 0.3);
         }
 
         .gallery-card .btn:hover {
             background: linear-gradient(135deg, #a84a2e 0%, #8b3d24 100%);
-            box-shadow: 0 6px 25px rgba(198, 93, 59, 0.5);
-            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(198, 93, 59, 0.5);
+            transform: translateY(-2px);
         }
 
         .video-section {
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             border-radius: 20px;
-            padding: 50px 40px;
-            margin: 60px auto;
-            max-width: 900px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            padding: 60px 50px;
+            margin: 0 auto 80px;
+            max-width: 1000px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
             text-align: center;
-            animation: fadeInUp 1.8s ease-out;
-            border: 3px solid #8fa584;
+            animation: fadeInUp 1.4s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #8fa584, #c65d3b, #8fa584);
         }
 
         .video-section h2 {
             font-family: 'Dancing Script', cursive;
-            font-size: 3em;
-            color: #c65d3b;
-            margin-bottom: 30px;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: #8b4513;
+            margin-bottom: 40px;
         }
 
         .video-container {
@@ -206,8 +276,8 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         }
 
         .video-container iframe {
@@ -223,8 +293,8 @@
             text-align: center;
             padding: 40px 20px;
             color: rgba(61, 40, 23, 0.6);
-            font-size: 0.9em;
-            margin-top: 60px;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #f4e8d8 0%, #e8d5c4 100%);
         }
 
         @keyframes fadeIn {
@@ -250,7 +320,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -258,47 +328,111 @@
             }
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3em;
+        @keyframes zoomIn {
+            from {
+                transform: scale(1);
             }
-            
-            .date {
-                font-size: 1.4em;
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 500px;
+            }
+
+            .hero-content h1 {
+                letter-spacing: 1px;
+            }
+
+            .hero-content .date {
+                letter-spacing: 2px;
+                margin-bottom: 30px;
+            }
+
+            .container {
+                padding: 50px 15px;
             }
 
             .message-section,
             .video-section {
-                padding: 30px 25px;
+                padding: 40px 25px;
+                margin-bottom: 50px;
             }
 
             .message-section h2,
             .video-section h2 {
-                font-size: 2.2em;
+                margin-bottom: 30px;
             }
 
             .content-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
+                margin-bottom: 50px;
+            }
+
+            .gallery-card {
+                padding: 40px 30px;
             }
 
             .gallery-card svg {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+            }
+
+            .scroll-indicator::before {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 450px;
+            }
+
+            .message-section,
+            .video-section,
+            .gallery-card {
+                padding: 30px 20px;
+            }
+
+            .gallery-card .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Brandon & Esha</h1>
-    <div class="date">October 18th, 2025</div>
-</header>
-
-<div class="hero-image">
-    <img src="docs/assets/images/0A5A9875.jpg" alt="Brandon & Esha" loading="lazy">
-</div>
+<!-- Full-Screen Hero Section -->
+<section class="hero-section">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+        <h1>Brandon & Esha</h1>
+        <div class="date">October 18th, 2025</div>
+    </div>
+    <div class="scroll-indicator"></div>
+</section>
 
 <div class="container">
     <div class="message-section">
